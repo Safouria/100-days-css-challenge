@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, "poppins";
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+.container{
+    width: 400px;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 5px;
+    background-color: #3faf82;
+}
+
+.line-container{
+    width: 80px;
+    height: 52px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.line{
+    width: 100%;
+    height: 8px;
+
+    background-color: #fff;
+    box-shadow:  0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 3px;
+}
+/*//////////////////////////rotate/////////////////////////*/
+.top, .bottom {
+  transform-origin: center;
+}
+
+.line-container.active .top {
+  animation: topAnim 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+.line-container.active .bottom {
+  animation: bottomAnim 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+.line-container.active .middle {
+  animation: fadeOut 0.9s forwards;
+}
+
+
+@keyframes topAnim {
+  0%   { transform: translateY(0) rotate(0); }
+  30%  { transform: translateY(20px) rotate(0); }
+  100% { transform: translateY(20px) rotate(45deg); }
+}
+
+@keyframes bottomAnim {
+  0%   { transform: translateY(0) rotate(0); }
+  30%  { transform: translateY(-20px) rotate(0); }
+  100% { transform: translateY(-20px) rotate(135deg); }
+}
+
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+/*//////////////////////////////////////////reverse/////////////*/
+
+.line-container.reverse .top {
+  animation: topBack 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+.line-container.reverse .bottom {
+  animation: bottomBack 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+.line-container.reverse .middle {
+  animation: fadeIn 0.9s forwards;
+}
+
+@keyframes topBack {
+  0%   { transform: translateY(20px) rotate(45deg); }
+  70%  { transform: translateY(20px) rotate(0); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes bottomBack {
+  0%   { transform: translateY(-20px) rotate(135deg); }
+  70%  { transform: translateY(-20px) rotate(0); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
